@@ -1,10 +1,14 @@
 <!DOCTYPE html>
 <html>
-  <head>
+<head>
     <title>{{ title }}</title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-  </head>
-  <body>
-    {% block body %}{% endblock %}
-  </body>
+    <link rel="stylesheet" href="/stylesheets/bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+</head>
+<body>
+    <div class="container">
+        <h1>Music Collection</h1>
+        {% block body %}{% endblock %}
+    </div>
+</body>
 </html>

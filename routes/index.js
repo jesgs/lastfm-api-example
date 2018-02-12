@@ -1,9 +1,12 @@
-var express = require('express');
-var router = express.Router();
+const home = require('./home');
 
-/* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
-});
+module.exports = function (app) {
+    app.use('/', home);
 
-module.exports = router;
+    // catch 404 and forward to error handler
+    app.use(function(req, res, next) {
+        const err = new Error('Not Found');
+        err.status = 404;
+        next(err);
+    });
+};
