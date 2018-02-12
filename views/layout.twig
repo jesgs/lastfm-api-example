@@ -1,10 +1,20 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>{{ title }}</title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-  </head>
-  <body>
-    {% block body %}{% endblock %}
-  </body>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{{ page_title(title) }}</title>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,800,800i" rel="stylesheet" />
+    <link rel="stylesheet" href="/stylesheets/bootstrap/css/bootstrap.css" />
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+</head>
+<body>
+    <div class="container">
+        <h1 class="spacing-bottom--3">Music Collection</h1>
+        <div class="row">
+            <div class="col-xs-12">
+                {% block body %}{% endblock %}
+            </div>
+        </div>
+    </div>
+</body>
 </html>
