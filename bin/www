@@ -3,6 +3,8 @@
 /**
  * Module dependencies.
  */
+const dotenv = require('dotenv');
+dotenv.config();
 
 const app = require('../app');
 const debug = require('debug')('last-fm:server');

@@ -1,0 +1,19 @@
+{% extends 'layout.twig' %}
+
+{% block body %}
+    <h1>{{title}}</h1>
+
+    {% if (data.topartists.artist) %}
+        <ul>
+        {% for artist in data.topartists.artist %}
+            <li>
+                <h4>{{ artist.name }}</h4>
+                {% if (artist.image[2]['#text']) %}
+                    <img src="{{ artist.image[2]['#text'] }}" alt="">
+                {% endif %}
+            </li>
+        {% endfor %}
+        </ul>
+    {% else %}
+    {% endif %}
+{% endblock %}
