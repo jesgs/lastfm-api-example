@@ -7,7 +7,7 @@
     <ul>
     {% for album in albums %}
         <li>
-            <h4><a href="/artist/{{ slugify(artist.artist) }}/{{ album.mbid }}">{{ album.name }}</a></h4>
+            <h4><a href="/artists/{{ slugify(artist.artist) }}/albums/{{ slugify(album.name) }}">{{ album.name }}</a></h4>
             <img src="{{ album.image[2]['#text'] }}" alt="">
         </li>
     {% endfor %}

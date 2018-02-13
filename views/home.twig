@@ -7,7 +7,7 @@
         <ul>
         {% for artist in data.topartists.artist %}
             <li>
-                <h4><a href="/artists/{{ artist.mbid }}">{{ artist.name }}</a></h4>
+                <h4><a href="/artists/{{ slugify(artist.name) }}">{{ artist.name }}</a></h4>
                 {% if (artist.image[2]['#text']) %}
                     <a href="/artists/{{ artist.mbid }}"><img src="{{ artist.image[2]['#text'] }}" alt=""></a>
                 {% endif %}

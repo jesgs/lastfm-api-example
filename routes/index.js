@@ -1,9 +1,11 @@
 const router = require('express').Router();
 const home = require('./home');
-const artists = require('./artists');
+const artist = require('./artist');
+const album = require('./album');
 
 router.use('/', home);
-router.use('/artists', artists);
+router.use('/artists', artist);
+router.use('/artists/:id/albums/:albumId', album);
 
 // catch 404 and forward to error handler
 router.use((req, res, next) => {

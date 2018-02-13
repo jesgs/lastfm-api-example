@@ -1,7 +1,6 @@
 const home = require('express').Router();
 const client = require('../client');
 
-/* GET home page. */
 home.get('/', function(req, res, next) {
     const endpoint = '?method=user.gettopartists&format=json&user='
         + process.env.LASTFM_USER + "&api_key=" + process.env.LASTFM_API_KEY
