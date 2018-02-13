@@ -5,11 +5,18 @@ const logger = require('morgan');
 const cookieParser = require('cookie-parser');
 const sassMiddleware = require('node-sass-middleware');
 const bodyParser = require('body-parser');
+const routes = require('./routes');
+const Twig = require('twig');
+const slugify = require('slugify');
 const app = express();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'twig');
+
+Twig.extendFunction('slugify', (value) => {
+    return slugify(value).toLowerCase();
+});
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
@@ -26,7 +33,7 @@ app.use(sassMiddleware({
 app.use(express.Router());
 app.use(express.static(path.join(__dirname, 'public')));
 
-require('./routes')(app);
+app.use('/', routes);
 
 // error handler
 app.use(function(err, req, res, next) {

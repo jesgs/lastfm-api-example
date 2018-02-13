@@ -1,0 +1,16 @@
+{% extends 'layout.twig' %}
+
+{% block body %}
+    <h1>{{ artist.artist }}</h1>
+    <h3>Albums</h3>
+    {% if (albums) %}
+    <ul>
+    {% for album in albums %}
+        <li>
+            <h4><a href="/artist/{{ slugify(artist.artist) }}/{{ album.mbid }}">{{ album.name }}</a></h4>
+            <img src="{{ album.image[2]['#text'] }}" alt="">
+        </li>
+    {% endfor %}
+    </ul>
+    {% endif %}
+{% endblock %}

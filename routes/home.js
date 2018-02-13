@@ -1,10 +1,8 @@
-const express = require('express');
-const router = express.Router();
+const home = require('express').Router();
 const client = require('../client');
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
-    res.statusCode = 200;
+home.get('/', function(req, res, next) {
     const endpoint = '?method=user.gettopartists&format=json&user='
         + process.env.LASTFM_USER + "&api_key=" + process.env.LASTFM_API_KEY
         + "&period=12month"
@@ -12,10 +10,10 @@ router.get('/', function(req, res, next) {
         + "&page=1";
 
     client.get(endpoint).then((response) => {
-        res.render('home', { title: '', data: response.data });
+        res.status(200).render('home', { title: '', data: response.data });
     }).catch((error) => {
-        res.render('error', { title: '', data: error.data });
+        res.status(500).render('error', { title: '', data: error.data });
     });
 });
 
-module.exports = router;
+module.exports = home;
