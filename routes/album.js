@@ -8,6 +8,7 @@ album.get('/:artistId/albums/:albumId', (req, res) => {
 
     const endpoint = '?method=album.getinfo&format=json&user='
         + process.env.LASTFM_USER + "&api_key=" + process.env.LASTFM_API_KEY
+        + "&autocorrect=1"
         + "&artist=" + artist
         + "&album=" + album;
 

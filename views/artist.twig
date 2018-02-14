@@ -6,10 +6,12 @@
     {% if (albums) %}
     <ul>
     {% for album in albums %}
+        {% if album.image[2]['#text'] %}
         <li>
             <h4><a href="/artists/{{ slugify(artist.artist) }}/albums/{{ slugify(album.name) }}">{{ album.name }}</a></h4>
             <img src="{{ album.image[2]['#text'] }}" alt="">
         </li>
+        {% endif %}
     {% endfor %}
     </ul>
     {% endif %}
