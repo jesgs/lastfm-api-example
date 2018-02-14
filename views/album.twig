@@ -1,0 +1,16 @@
+{% extends 'layout.twig' %}
+
+{% block body %}
+    <h2>{{ album.name }}</h2>
+    <img src="{{ album.image[2]['#text'] }}" alt="">
+    {% if album.tracks.track %}
+    <ol>
+    {% for track in album.tracks.track %}
+        <li>
+            <h4>{{ track.name }}</h4>
+            <p>Duration: {{ track.duration }}</p>
+        </li>
+    {% endfor %}
+    </ol>
+    {% endif %}
+{% endblock %}

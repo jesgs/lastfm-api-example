@@ -5,7 +5,7 @@ const album = require('./album');
 
 router.use('/', home);
 router.use('/artists', artist);
-router.use('/artists/:id/albums/:albumId', album);
+router.use('/artists', album);
 
 // catch 404 and forward to error handler
 router.use((req, res, next) => {
