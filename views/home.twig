@@ -4,13 +4,18 @@
     <h1>{{title}}</h1>
 
     {% if (data.topartists.artist) %}
-        <ul>
+        <ul class="list-unstyled">
         {% for artist in data.topartists.artist %}
-            <li>
-                <h4><a href="/artists/{{ slugify(artist.name) }}">{{ artist.name }}</a></h4>
+            <li class="mc-item">
+                <a href="/artists/{{ slugify(artist.name) }}" class="mc-item__img">
+                    <div class="mc-item__img__overlay"></div>
                 {% if (artist.image[2]['#text']) %}
-                    <a href="/artists/{{ artist.mbid }}"><img src="{{ artist.image[2]['#text'] }}" alt=""></a>
+                    <img width="174" height="174" src="{{ artist.image[2]['#text'] }}" alt="">
+                {% else %}
+                    <img width="174" height="174"  src="/images/default_artist.jpg" alt="">
                 {% endif %}
+                </a>
+                <h4><a href="/artists/{{ slugify(artist.name) }}">{{ artist.name }}</a></h4>
             </li>
         {% endfor %}
         </ul>

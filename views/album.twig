@@ -1,16 +1,39 @@
 {% extends 'layout.twig' %}
 
 {% block body %}
-    <h2>{{ album.name }}</h2>
-    <img src="{{ album.image[2]['#text'] }}" alt="">
-    {% if album.tracks.track %}
-    <ol>
-    {% for track in album.tracks.track %}
-        <li>
-            <h4>{{ track.name }}</h4>
-            <p>Duration: {{ track.duration }}</p>
-        </li>
-    {% endfor %}
-    </ol>
-    {% endif %}
+    <div class="album">
+        <div class="row media">
+            <div class="media-left">
+                <img src="{{ album.image[4]['#text'] }}" alt="">
+            </div>
+            <div class="media-body">
+                <h2>{{ album.name }}</h2>
+                <h3>{{ album.artist }}</h3>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12">
+            {% if album.tracks.track %}
+                <table class="col-xs-12">
+                    <thead>
+                        <tr>
+                            <th>Track</th>
+                            <th>Title</th>
+                            <th>Length</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {% for track in album.tracks.track %}
+                        <tr>
+                            <td>{{ loop.index }}</td>
+                            <td>{{ track.name }}</td>
+                            <td>{{ track.duration }}</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            {% endif %}
+            </div>
+        </div>
+    </div>
 {% endblock %}

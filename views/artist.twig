@@ -4,12 +4,15 @@
     <h2>{{ artist.artist }}</h2>
     <h3>Albums</h3>
     {% if (albums) %}
-    <ul>
+    <ul class="list-unstyled">
     {% for album in albums %}
         {% if album.image[2]['#text'] %}
-        <li>
+        <li class="mc-item">
+            <a href="/artists/{{ slugify(artist.artist) }}/albums/{{ slugify(album.name) }}" class="mc-item__img">
+                <div class="mc-item__img__overlay--album"></div>
+                <img width="174" height="174" src="{{ album.image[2]['#text'] }}" alt="">
+            </a>
             <h4><a href="/artists/{{ slugify(artist.artist) }}/albums/{{ slugify(album.name) }}">{{ album.name }}</a></h4>
-            <img src="{{ album.image[2]['#text'] }}" alt="">
         </li>
         {% endif %}
     {% endfor %}
