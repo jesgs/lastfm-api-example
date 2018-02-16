@@ -10,9 +10,10 @@ artist.get('/:id', (req, res) => {
         + "&artist=" + artist;
 
     client.get(endpoint).then((response) => {
+        let artist = response.data.topalbums['@attr'].artist;
         res.status(200).render('artist', {
-            debug: response.data,
-            artist: response.data.topalbums['@attr'],
+            title: artist,
+            artist: artist,
             albums: response.data.topalbums.album
         });
     }).catch((error) => {

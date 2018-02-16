@@ -14,6 +14,10 @@ album.get('/:artistId/albums/:albumId', (req, res) => {
 
     client.get(endpoint).then((response) => {
         res.status(200).render('album', {
+            title: [
+                response.data.album.artist,
+                response.data.album.name
+            ],
             album: response.data.album
         });
     }).catch((error) => {
