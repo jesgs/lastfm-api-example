@@ -1,27 +1,25 @@
 const album = require('express').Router();
-const client = require('../client');
+const albumClient = require('../client/last-fm/album');
 
 album.get('/:artistId/albums/:albumId', (req, res) => {
     const regex = /(-)/g,
           artist = req.params.artistId.replace(regex, ' '),
           album = req.params.albumId.replace(regex, ' ');
 
-    const endpoint = '?method=album.getinfo&format=json&user='
-        + process.env.LASTFM_USER + "&api_key=" + process.env.LASTFM_API_KEY
-        + "&autocorrect=1"
-        + "&artist=" + artist
-        + "&album=" + album;
-
-    client.get(endpoint).then((response) => {
-        res.status(200).render('album', {
-            title: [
-                response.data.album.artist,
-                response.data.album.name
-            ],
-            album: response.data.album
-        });
+    albumClient.getInfo(album, artist).then((response) => {
+        if (!response.data.error) {
+            res.status(200).render('album', {
+                title: [
+                    response.data.album.artist,
+                    response.data.album.name
+                ],
+                album: response.data.album
+            });
+        } else {
+            res.status(200).render('api_error', {error: response.data})
+        }
     }).catch((error) => {
-
+        res.status(500).render('error', {error: error})
     });
 });
 

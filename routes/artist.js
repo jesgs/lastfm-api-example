@@ -1,15 +1,9 @@
 const artist = require('express').Router();
-const client = require('../client');
+const artistClient = require('../client/last-fm/artists');
 
 artist.get('/:id', (req, res) => {
     const artist = req.params.id.replace(/(-)/g, ' ');
-    const endpoint = '?method=artist.gettopalbums&format=json&user='
-        + process.env.LASTFM_USER + "&api_key=" + process.env.LASTFM_API_KEY
-        + "&autocorrect=1"
-        + "&limit=15"
-        + "&artist=" + artist;
-
-    client.get(endpoint).then((response) => {
+    artistClient.getTopAlbums(artist).then((response) => {
         let artist = response.data.topalbums['@attr'].artist;
         res.status(200).render('artist', {
             title: artist,
