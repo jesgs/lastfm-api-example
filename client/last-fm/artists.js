@@ -2,16 +2,12 @@ const LastFm = require('../last-fm');
 
 const Artist = {
     getTopAlbums: function(artist) {
-        let params = {
+        let params = LastFm.setDefaults({
             method: 'artist.gettopalbums',
-            format: 'json',
-            api_key: process.env.LASTFM_API_KEY,
-            autocorrect: 1,
-            user: process.env.LASTFM_USER,
             limit: 15,
             artist: encodeURIComponent(artist)
-        };
-
+        });
+        console.log(params);
         return LastFm.client(params);
     }
 };

@@ -3,7 +3,11 @@ const client = require('../index');
 const LastFm = {
     defaults: {
         format: 'json',
-        api_key: process.env.LASTFM_API_KEY
+        autocorrect: 1,
+        api_key: process.env.LASTFM_API_KEY,
+        user: process.env.LASTFM_USER,
+        limit: 15,
+        page: 1
     },
 
     buildQueryString : function(params) {
@@ -11,7 +15,11 @@ const LastFm = {
     },
 
     client: function(params) {
-        return client.get(LastFm.buildQueryString(params));
+        return client.get(this.buildQueryString(params));
+    },
+
+    setDefaults: function(params) {
+        return Object.assign(this.defaults, params);
     }
 };
 
