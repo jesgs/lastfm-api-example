@@ -2,13 +2,17 @@
 
 {% block body %}
     <div class="album">
-        <div class="row media">
-            <div class="media-left">
-                <img src="{{ album.image[4]['#text'] }}" alt="">
-            </div>
-            <div class="media-body">
-                <h2>{{ album.name }}</h2>
-                <h3>{{ album.artist }}</h3>
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="media">
+                    <div class="media-left">
+                        <img src="{{ album.image[4]['#text'] }}" alt="">
+                    </div>
+                    <div class="media-body">
+                        <h2>{{ album.name }}</h2>
+                        <h3>{{ album.artist }}</h3>
+                    </div>
+                </div>
             </div>
         </div>
         <div class="row">
@@ -27,7 +31,7 @@
                         <tr>
                             <td>{{ loop.index }}</td>
                             <td>{{ track.name }}</td>
-                            <td>{{ track.duration }}</td>
+                            <td>{{ seconds_to_minutes(track.duration) }}</td>
                         </tr>
                     {% endfor %}
                     </tbody>
