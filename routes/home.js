@@ -9,7 +9,7 @@ home.get('/', function(req, res, next) {
             res.status(200).render('api_error', {error: response.data})
         }
     }).catch((error) => {
-        res.status(500).render('error', { title: '', data: error.data });
+        res.status(500).render('error', { title: '', error: error.data });
     });
 });
 

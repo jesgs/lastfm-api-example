@@ -7,7 +7,7 @@ const Artist = {
             limit: 15,
             artist: encodeURIComponent(artist)
         });
-        console.log(params);
+
         return LastFm.client(params);
     }
 };
