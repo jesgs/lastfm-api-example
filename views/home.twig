@@ -1,8 +1,11 @@
 {% extends 'layout.twig' %}
 
 {% block body %}
-    <h1>{{title}}</h1>
-
+    <h1 class="spacing-bottom--3">{{title}}</h1>
+    <div class="stats">
+        <h4><strong>Last.fm user</strong>: {{ app().user }}</h4>
+        <p><strong>Time Period</strong>: 12 months</p>
+    </div>
     {% if (data.topartists.artist) %}
         <ul class="list-unstyled">
         {% for artist in data.topartists.artist %}
