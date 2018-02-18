@@ -20,6 +20,10 @@ h1, h2, h3 {
     font-weight: 800;
 }
 
+h1 > a {
+    color: #fff;
+}
+
 h4 {
     font-family: 'Open Sans', sans-serif;
     font-weight: 300;
@@ -61,6 +65,25 @@ h4 {
                 height: 183px;
             }
         }
+    }
+}
+
+.album {
+    &__summary {
+        font-size: 14px;
+        line-height: 1.5;
+        width: 80%;
+    }
+}
+
+$amount: 50;
+.table {
+    > thead:first-child > tr:first-child > th {
+        border-bottom: 2px solid darken(#ddd, $amount);
+    }
+
+    > tbody  > tr  > td {
+        border-top: 1px solid darken(#ddd, $amount)
     }
 }
 
